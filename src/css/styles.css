@@ -1,6 +1,7 @@
 /*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
-/*Bootstrap*/
+/*Bootstrap & Body Styling*/
 
 .grid-body {
   display: grid;
@@ -9,11 +10,11 @@
 }
 
 .body1 {
-  grid-area: 1/1/2/2;
+  grid-area: 1/1/2/3;
 }
 
 .body2 {
-  grid-area: 1/2/2/6;
+  grid-area: 1/3/2/6;
 }
 
 .body3 {
@@ -36,5 +37,65 @@
   grid-area: 2/2/6/5;
 }
 
-/*Styling*/
+.body1,
+.body2,
+.body3,
+.body4,
+.body5,
+.body6,
+.body7 {
+  border: solid black 3px;
+  padding: 3%;
+  background-color: white;
+}
 
+/*Unique Classes*/
+
+.project-title-card {
+  background-image: url(https://t4.ftcdn.net/jpg/03/37/22/29/360_F_337222949_51G92ChHFiN83woONa5pQedzZt5FVmfQ.jpg);
+  background-size: cover;
+  border: solid black 2px;
+}
+
+.credit-box {
+  border: solid black 3px;
+  border-radius: 25px;
+  background-color: darkblue;
+  font-size: 125%;
+  color: white;
+}
+
+/*Reusable Classes*/
+
+.container {
+  border: solid black 1.5px;
+  background-color: wheat;
+  padding: 15px;
+}
+
+.centered {
+  text-align: center;
+  padding: 5px;
+  margin: 4px;
+}
+
+.title {
+  font-family: "Limelight", sans-serif;
+  font-family: 400;
+  font-style: normal;
+}
+
+/*Broad Changes*/
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  font-size: 150%;
+}
+
+body {
+  background-color: black;
+}
