@@ -1,5 +1,5 @@
 /*Imports*/
-@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
 
 /*Bootstrap & Body Styling*/
 
@@ -80,9 +80,27 @@
 }
 
 .title {
-  font-family: "Limelight", sans-serif;
+  font-family: "Notable", sans-serif;
   font-family: 400;
+  font-size: 250%;
   font-style: normal;
+  color: white;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+}
+
+.transparent-background {
+  border: solid black 3px;
+  background: linear-gradient(
+    to right, 
+    rgba(255, 0, 0, 0.5),
+    rgba(255, 165, 0, 0.5),
+    rgba(255, 255, 0, 0.5),
+    rgba(0, 0, 255, 0.5),
+    rgba(75, 0, 130, 0.5),
+    rgba(238, 130, 238, 0.5)
+  );
+  padding: 0.5%;
 }
 
 /*Broad Changes*/
