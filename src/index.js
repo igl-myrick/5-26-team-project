@@ -7,6 +7,8 @@ import getColors from './getColors';
 
 // IDs and Consts
 
+const disclaimerMenu = document.getElementById("disclaimer");
+const mainContentBody = document.getElementById("main-body");
 
 
 // Business Logic

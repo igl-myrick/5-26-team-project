@@ -3,6 +3,12 @@
 
 /*Bootstrap & Body Styling*/
 
+.disclaimer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .grid-body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -110,6 +116,10 @@
   font-weight: bolder;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 1px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*Broad Changes*/
