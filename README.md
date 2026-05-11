@@ -25,3 +25,4 @@
 * _Handling for problematic color schemes (in case results give poor readability or colors too similar, etc.), could have a fallback color or formula for determining fallback colors_
 * _More advanced interpretation of the color schemes returned by API? (displayed in graph or something along those lines)_
 * _A way (via array or other means), to save the last few colors "remembered" for use. Maybe clicking the items in this UI area can display color ID for users to call back upon?_
+* _Query other models in the API, to have a larger variety of potential colors? Additionally, potentially allow the users to select a specific model/color scheme (or random by default)_

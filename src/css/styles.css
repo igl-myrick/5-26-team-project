@@ -3,6 +3,12 @@
 
 /*Bootstrap & Body Styling*/
 
+.disclaimer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .grid-body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -45,7 +51,7 @@
 .body6,
 .body7 {
   border: solid black 3px;
-  padding: 3%;
+  
   background-color: white;
 }
 
@@ -65,30 +71,6 @@
   color: white;
 }
 
-/*Reusable Classes*/
-
-.container {
-  border: solid black 1.5px;
-  background-color: wheat;
-  padding: 15px;
-}
-
-.centered {
-  text-align: center;
-  padding: 5px;
-  margin: 4px;
-}
-
-.title {
-  font-family: "Notable", sans-serif;
-  font-family: 400;
-  font-size: 250%;
-  font-style: normal;
-  color: white;
-  -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: 1px;
-}
-
 .transparent-background {
   border: solid black 3px;
   background: linear-gradient(
@@ -101,6 +83,43 @@
     rgba(238, 130, 238, 0.5)
   );
   padding: 0.5%;
+  border-radius: 25%;
+}
+
+/*Reusable Classes*/
+
+.box {
+  border: solid black 1.5px;
+  background-color: wheat;
+  padding: 5px;
+}
+
+.centered {
+  text-align: center;
+  padding: 5px;
+  margin: 4px;
+}
+
+.title {
+  font-family: "Notable", sans-serif;
+  font-weight: 400;
+  font-size: 250%;
+  font-style: normal;
+  color: white;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+}
+
+
+.name {
+  color: white;
+  font-weight: bolder;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*Broad Changes*/
