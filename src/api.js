@@ -1,5 +1,5 @@
 export default class ColorService {
-  static getColorList() {
+  static getColorList(apiModel) {
     return new Promise(function(resolve, reject) {
       const request = new XMLHttpRequest();
       request.addEventListener("loadend", function() {
@@ -10,7 +10,7 @@ export default class ColorService {
         }
       });
       request.open("POST", "http://colormind.io/api/", true);
-      request.send(JSON.stringify({model: "default"}));
+      request.send(JSON.stringify({model: apiModel || "default"}));
     });
   }
 }
