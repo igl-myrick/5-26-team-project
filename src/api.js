@@ -13,4 +13,18 @@ export default class ColorService {
       request.send(JSON.stringify({model: apiModel || "default"}));
     });
   }
+  static getApiModels() {
+    return new Promise(function(resolve, reject) {
+      const request = new XMLHttpRequest();
+      request.addEventListener("loadend", function() {
+        if (this.status === 200 && this.responseText[0] === "{") {
+          resolve(JSON.parse(this.responseText));
+        } else {
+          reject();
+        }
+      });
+      request.open("POST", "http://colormind.io/list/", true);
+      request.send();
+    });
+  }
 }
