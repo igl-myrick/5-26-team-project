@@ -13,8 +13,12 @@ const mainContentBody = document.getElementById("main-body");
 
 // Business Logic
 
-function callColorApi(resolveCallback, rejectCallback) {
-  ColorService.getColorList().then(resolveCallback, rejectCallback);
+function grabColorList(model, resolveCallback, rejectCallback) {
+  ColorService.getColorList(model).then(resolveCallback, rejectCallback);
+}
+
+function grabApiModels(resolveCallback, rejectCallback) {
+  ColorService.getApiModels().then(resolveCallback, rejectCallback);
 }
 
 // UI Logic
