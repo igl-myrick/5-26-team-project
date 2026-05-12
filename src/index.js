@@ -15,5 +15,9 @@ function grabColorList(model, resolveCallback, rejectCallback) {
   ColorService.getColorList(model).then(resolveCallback, rejectCallback);
 }
 
+function grabApiModels(resolveCallback, rejectCallback) {
+  ColorService.getApiModels().then(resolveCallback, rejectCallback);
+}
+
 // UI Logic
 
