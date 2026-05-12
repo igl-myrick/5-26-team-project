@@ -11,4 +11,8 @@ describe("rgbToHex", () => {
   test.each(output)("should correctly return an array of strings", (str) => {
     expect(typeof str).toEqual("string");
   });
+
+  test("should correctly return array of hex codes", () => {
+    expect(output).toEqual(['#481b13', '#ac9e4d', '#6a6e5f', '#343728', '#49140e']);
+  });
 });
