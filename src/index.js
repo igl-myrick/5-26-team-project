@@ -11,8 +11,8 @@ import getColors from './getColors';
 
 // Business Logic
 
-function callColorApi(resolveCallback, rejectCallback) {
-  ColorService.getColorList().then(resolveCallback, rejectCallback);
+function grabColorList(model, resolveCallback, rejectCallback) {
+  ColorService.getColorList(model).then(resolveCallback, rejectCallback);
 }
 
 // UI Logic
