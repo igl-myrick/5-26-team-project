@@ -24,8 +24,7 @@ function grabApiModels(resolveCallback, rejectCallback) {
 // UI Logic
 
 displayButton.addEventListener("click", async function() {
-  const data = callColorApi();
-  console.log(data);
+  
 });
 
 disclaimerButton.addEventListener("click", function() {
