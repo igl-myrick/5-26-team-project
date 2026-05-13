@@ -9,8 +9,8 @@ import getColors from './getColors';
 
 const disclaimerMenu = document.getElementById("disclaimer");
 const mainContentBody = document.getElementById("main-body");
-
-
+const disclaimerButton = document.getElementById("disclaimer-button-id");
+const displayButton = document.getElementById("display-button");
 // Business Logic
 
 function callColorApi(resolveCallback, rejectCallback) {
@@ -19,3 +19,12 @@ function callColorApi(resolveCallback, rejectCallback) {
 
 // UI Logic
 
+displayButton.addEventListener("click", async function() {
+  const data = callColorApi();
+  console.log(data);
+});
+
+disclaimerButton.addEventListener("click", function() {
+  disclaimerMenu.classList.add("hidden");
+  mainContentBody.classList.remove("hidden");
+});
