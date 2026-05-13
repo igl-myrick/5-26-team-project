@@ -17,9 +17,15 @@ function grabColorList(model, resolveCallback, rejectCallback) {
   ColorService.getColorList(model).then(resolveCallback, rejectCallback);
 }
 
-// function grabApiModels(resolveCallback, rejectCallback) {
-//   ColorService.getApiModels().then(resolveCallback, rejectCallback);
-// }
+function grabApiModels(resolveCallback, rejectCallback) {
+  ColorService.getApiModels().then(resolveCallback, rejectCallback);
+}
+
+function handleModelSelection(response) {
+  const modelArr = response.result;
+  const rand = Math.floor(Math.random() * 6) + 1;
+  grabColorList(modelArr[rand], displayColors, printError);
+}
 
 // UI Logic
 
@@ -41,7 +47,7 @@ function printError() {
 }
 
 displayButton.addEventListener("click", async function() {
-  return grabColorList("default", displayColors, printError);
+  return grabApiModels(handleModelSelection, printError);
 });
 
 disclaimerButton.addEventListener("click", function() {
