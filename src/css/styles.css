@@ -61,6 +61,14 @@
 
 /*Unique Classes*/
 
+.menu {
+  display: block;
+  align-items: center;
+  border: solid black 3px;
+  background-color: white;
+  padding: 2.5px;
+  background-color: gray;
+}
 
 
 .body2 .row {
@@ -95,6 +103,11 @@
   );
   padding: 0.5%;
   border-radius: 25%;
+}
+
+.bordered-frame {
+  border: solid black 3px;
+  border-radius: 30px;
 }
 
 /*Reusable Classes*/
