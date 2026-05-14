@@ -62,7 +62,11 @@
 /*Unique Classes*/
 
 .menu {
-  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%); 
+  z-index: 10;
   align-items: center;
   border: solid black 3px;
   background-color: white;
