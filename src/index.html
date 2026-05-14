@@ -30,9 +30,15 @@
             </div>
             <div class="col-md-4 section">
               <h1>Controls</h1>
-              <ul class="button-pad">
-                <li><button id="display-button">Get Display</button></li>
-              </ul>
+              <div class="dropdown">
+                <button id="options">Click Me for Options</button>
+                <div id="mainMenu" class="dropdown-menu hidden">
+                  <button id="display-button" class="menu-button">Display Content</button>
+                  <button id="cycle-up" class="menu-button">Cycle /\</button>
+                  <button id="cycle-down" class="menu-button">Cycle \/</button>
+                  <button id="reset-page" class="menu-button">Reset Page</button>
+                </div>
+              </div>
             </div>
           </div>
       </div>

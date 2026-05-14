@@ -45,11 +45,7 @@ function getData(response) {
 }
 
 displayButton.addEventListener("click", async function() {
-<<<<<<<<< Temporary merge branch 1
   return grabColorList("default", displayColors, printError);
-=========
-  
->>>>>>>>> Temporary merge branch 2
 });
 
 disclaimerButton.addEventListener("click", function() {
