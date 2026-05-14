@@ -3,7 +3,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ColorService from './api.js';
-import getColors from './getColors';
+import getColors from './getColors.js';
+import rgbToHex from './rgbToHex.js';
 
 // IDs and Consts
 
@@ -31,13 +32,16 @@ function handleModelSelection(response) {
 
 function displayColors(response) {
   const output = getColors(response);
+  const hexValues = rgbToHex(response);
   const body7 = document.querySelector(".body7");
   const p = document.createElement("p");
   for (let i = 0; i < output.length; i++) {
-    const span = document.createElement("span");
-    span.style.color = output[i];
-    span.innerText = "aaaaa";
-    p.append(span); 
+    const palette = document.getElementById(`color${i+1}`);
+    palette.style.backgroundColor = `${output[i]}`;
+    palette.style.height = "40px";
+    const hexP = document.getElementById(`hex${i+1}`);
+    hexP.innerText = `${hexValues[i]}`;
+    hexP.style.color = `${output[i]}`;
   }
   body7.append(p);
 }
