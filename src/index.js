@@ -17,6 +17,10 @@ function grabColorList(model, resolveCallback, rejectCallback) {
   ColorService.getColorList(model).then(resolveCallback, rejectCallback);
 }
 
+// function grabApiModels(resolveCallback, rejectCallback) {
+//   ColorService.getApiModels().then(resolveCallback, rejectCallback);
+// }
+
 // UI Logic
 
 // function displayColors(response) {
@@ -41,8 +45,11 @@ function getData(response) {
 }
 
 displayButton.addEventListener("click", async function() {
-  const data = await grabColorList("default", getData, printError);
-  console.log(data);
+<<<<<<<<< Temporary merge branch 1
+  return grabColorList("default", displayColors, printError);
+=========
+  
+>>>>>>>>> Temporary merge branch 2
 });
 
 disclaimerButton.addEventListener("click", function() {
