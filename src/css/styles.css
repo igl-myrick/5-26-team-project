@@ -21,8 +21,10 @@
 
 .body2 {
   grid-area: 1/3/2/6;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .body3 {
@@ -58,6 +60,13 @@
 }
 
 /*Unique Classes*/
+
+
+
+.body2 .row {
+  width: 100%;
+  flex-wrap: wrap;
+}
 
 .project-title-card {
   background-image: url(https://t4.ftcdn.net/jpg/03/37/22/29/360_F_337222949_51G92ChHFiN83woONa5pQedzZt5FVmfQ.jpg);
@@ -102,6 +111,21 @@
   border: solid black 3px;
   font-weight: bolder;
   flex-grow: 1;
+}
+
+.section {
+  border: black;
+  border-radius: 25%;
+  background: linear-gradient(
+    to right,
+    rgba(252, 10, 10, 0.5),
+    rgba(255, 140, 0, 0.5),
+    rgba(246, 233, 51, 0.5),
+    rgba(0, 255, 26, 0.5)
+  );
+
+  text-align: center;
+  margin: 0% 5%;
 }
 
 .centered {
