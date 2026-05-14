@@ -3,7 +3,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ColorService from './api.js';
-import getColors from './getColors';
+import getColors from './getColors.js';
+import rgbToHex from './rgbToHex.js';
 
 // IDs and Consts
 
@@ -23,18 +24,18 @@ function grabColorList(model, resolveCallback, rejectCallback) {
 
 // UI Logic
 
-// function displayColors(response) {
-//   const output = getColors(response);
-//   const body7 = document.querySelector(".body7");
-//   const p = document.createElement("p");
-//   for (let i = 0; i < output.length; i++) {
-//     const span = document.createElement("span");
-//     span.style.color = output[i];
-//     span.innerText = "aaaaa";
-//     p.append(span); 
-//   }
-//   body7.append(p);
-// }
+function displayColors(response) {
+  const output = getColors(response);
+  const body7 = document.querySelector(".body7");
+  const p = document.createElement("p");
+  for (let i = 0; i < output.length; i++) {
+    const span = document.createElement("span");
+    span.style.color = output[i];
+    span.innerText = "aaaaa";
+    p.append(span); 
+  }
+  body7.append(p);
+}
 
 function printError() {
   console.log("call failed");
