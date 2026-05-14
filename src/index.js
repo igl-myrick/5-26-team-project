@@ -21,10 +21,33 @@ function grabApiModels(resolveCallback, rejectCallback) {
   ColorService.getApiModels().then(resolveCallback, rejectCallback);
 }
 
+function handleModelSelection(response) {
+  const modelArr = response.result;
+  const rand = Math.floor(Math.random() * 6) + 1;
+  grabColorList(modelArr[rand], displayColors, printError);
+}
+
 // UI Logic
 
+function displayColors(response) {
+  const output = getColors(response);
+  const body7 = document.querySelector(".body7");
+  const p = document.createElement("p");
+  for (let i = 0; i < output.length; i++) {
+    const span = document.createElement("span");
+    span.style.color = output[i];
+    span.innerText = "aaaaa";
+    p.append(span); 
+  }
+  body7.append(p);
+}
+
+function printError() {
+  console.log("call failed");
+}
+
 displayButton.addEventListener("click", async function() {
-  
+  return grabApiModels(handleModelSelection, printError);
 });
 
 disclaimerButton.addEventListener("click", function() {
