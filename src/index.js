@@ -17,31 +17,32 @@ function grabColorList(model, resolveCallback, rejectCallback) {
   ColorService.getColorList(model).then(resolveCallback, rejectCallback);
 }
 
-// function grabApiModels(resolveCallback, rejectCallback) {
-//   ColorService.getApiModels().then(resolveCallback, rejectCallback);
-// }
-
 // UI Logic
 
-function displayColors(response) {
-  const output = getColors(response);
-  const body7 = document.querySelector(".body7");
-  const p = document.createElement("p");
-  for (let i = 0; i < output.length; i++) {
-    const span = document.createElement("span");
-    span.style.color = output[i];
-    span.innerText = "aaaaa";
-    p.append(span); 
-  }
-  body7.append(p);
-}
+// function displayColors(response) {
+//   const output = getColors(response);
+//   const body7 = document.querySelector(".body7");
+//   const p = document.createElement("p");
+//   for (let i = 0; i < output.length; i++) {
+//     const span = document.createElement("span");
+//     span.style.color = output[i];
+//     span.innerText = "aaaaa";
+//     p.append(span); 
+//   }
+//   body7.append(p);
+// }
 
 function printError() {
   console.log("call failed");
 }
 
+function getData(response) {
+  return response.result;
+}
+
 displayButton.addEventListener("click", async function() {
-  return grabColorList("default", displayColors, printError);
+  const data = await grabColorList("default", getData, printError);
+  console.log(data);
 });
 
 disclaimerButton.addEventListener("click", function() {
