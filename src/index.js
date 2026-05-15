@@ -16,7 +16,9 @@ const optionButton = document.getElementById("options");
 const cycleUp = document.getElementById("cycle-up");
 const cycleDown = document.getElementById("cycle-down");
 const resetPage = document.getElementById("reset-page");
-
+let currentArray = [];
+let currentIndex = 0;
+let currentColor = "";
 // Business Logic
 
 function grabColorList(model, resolveCallback, rejectCallback) {
@@ -67,27 +69,52 @@ function printError() {
 }
 
 function handleArray(response) {
-  const arrayList = response.result;
-  for (let i = 0; i < arrayList; i++) {
-    console.log(arrayList[i]);
+  currentArray = [];
+  const colors = rgbToHex(response);
+  for (let i = 0; i < colors.length; i++) {
+    currentArray.push(colors[i]);
   }
+  console.log(currentArray);
 }
 
 function handlePageChange(color) {
   console.log(color + "1")
 }
 
+function updatedSelect() {
+  document.getElementById("selected-item").innerText = currentArray[currentIndex];
+}
+
 displayButton.addEventListener("click", async function() {
   return grabApiModels(handleModelSelection, printError);
 });
 
-disclaimerButton.addEventListener("click", function() {
+disclaimerButton.addEventListener("click", () => {
   disclaimerMenu.classList.add("hidden");
   mainContentBody.classList.remove("hidden");
 });
 
 
-optionButton.addEventListener("click", function() {
+
+optionButton.addEventListener("click", () => {
   const toggledMenu = document.getElementById("mainMenu");
   toggledMenu.classList.toggle("hidden");
+})
+
+cycleUp.addEventListener("click", () => {
+  if (currentArray.length === 0) {
+    return;
+  } else {
+    currentIndex = (currentIndex + 1) % currentArray.length;
+    return currentArray[currentIndex];
+  }
+})
+
+cycleDown.addEventListener("click", () => {
+  if (currentArray.length === 0) {
+    return;
+  } else {
+    currentIndex = (currentIndex - 1) % currentArray.length;
+    return currentArray[currentIndex];
+  }
 })
