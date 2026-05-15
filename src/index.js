@@ -37,10 +37,11 @@ function handleModelSelection(response) {
 // UI Logic
 
 function displayColors(response) {
+  if (document.getElementById("error-message")) {
+    document.getElementById("error-message").remove();
+  }
   const output = getColors(response);
   const hexValues = rgbToHex(response);
-  const body7 = document.querySelector(".body7");
-  const p = document.createElement("p");
   for (let i = 0; i < output.length; i++) {
     const palette = document.getElementById(`color${i+1}`);
     palette.style.backgroundColor = `${output[i]}`;
@@ -51,11 +52,18 @@ function displayColors(response) {
     hexP.style.color = `${output[i]}`;
     palette.addEventListener("click", () => handlePageChange(hexValues[i]));
   }
-  body7.append(p);
 }
 
 function printError() {
-  console.log("call failed");
+  if (document.getElementById("error-message")) {
+    document.getElementById("error-message").remove();
+  }
+  const body7 = document.querySelector(".body7");
+  const errorP = document.createElement("p");
+  errorP.setAttribute("id", "error-message");
+  errorP.style.color = "red";
+  errorP.innerText = "There was an error, please try again";
+  body7.append(errorP);
 }
 
 function handleArray(response) {
