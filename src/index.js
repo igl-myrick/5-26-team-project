@@ -19,8 +19,8 @@ const resetPage = document.getElementById("reset-page");
 
 // Business Logic
 
-function grabColorList(model, resolveCallback, rejectCallback) {
-  ColorService.getColorList(model).then(resolveCallback, rejectCallback);
+function grabColorList(model, colorInput, resolveCallback, rejectCallback) {
+  ColorService.getColorList(model, colorInput).then(resolveCallback, rejectCallback);
 }
 
 function grabApiModels(resolveCallback, rejectCallback) {
@@ -30,8 +30,7 @@ function grabApiModels(resolveCallback, rejectCallback) {
 function handleModelSelection(response) {
   const modelArr = response.result;
   const rand = Math.floor(Math.random() * 6) + 1;
-  grabColorList(modelArr[rand], handleArray, printError);
-  grabColorList(modelArr[rand], displayColors, printError);
+  grabColorList(modelArr[rand], undefined, displayColors, printError);
 }
 
 // UI Logic
