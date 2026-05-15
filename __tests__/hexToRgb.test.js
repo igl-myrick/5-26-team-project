@@ -6,4 +6,8 @@ describe("hexToRgb", () => {
   test("should correctly return an array", () => {
     expect(Array.isArray(output)).toEqual(true);
   });
+
+  test.each(output)("should correctly return an array of numbers", (elem) => {
+    expect(typeof elem).toEqual("number");
+  });
 });
