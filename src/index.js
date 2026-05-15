@@ -35,10 +35,11 @@ function handleModelSelection(response) {
 // UI Logic
 
 function displayColors(response) {
+  if (document.getElementById("error-message")) {
+    document.getElementById("error-message").remove();
+  }
   const output = getColors(response);
   const hexValues = rgbToHex(response);
-  const body7 = document.querySelector(".body7");
-  const p = document.createElement("p");
   for (let i = 0; i < output.length; i++) {
     const palette = document.getElementById(`color${i+1}`);
     palette.style.backgroundColor = `${output[i]}`;
@@ -47,13 +48,19 @@ function displayColors(response) {
     const hexP = document.getElementById(`hex${i+1}`);
     hexP.innerText = `${hexValues[i]}`;
     hexP.style.color = `${output[i]}`;
-    
   }
-  body7.append(p);
 }
 
 function printError() {
-  console.log("call failed");
+  if (document.getElementById("error-message")) {
+    document.getElementById("error-message").remove();
+  }
+  const body7 = document.querySelector(".body7");
+  const errorP = document.createElement("p");
+  errorP.setAttribute("id", "error-message");
+  errorP.style.color = "red";
+  errorP.innerText = "There was an error, please try again";
+  body7.append(errorP);
 }
 
 displayButton.addEventListener("click", async function() {
@@ -69,5 +76,4 @@ optionButton.addEventListener("click", function() {
   const toggledMenu = document.getElementById("mainMenu");
   console.log(toggledMenu.classList);
   toggledMenu.classList.toggle("hidden");
-  
-})
+});
