@@ -17,6 +17,7 @@ const optionButton = document.getElementById("options");
 const cycleUp = document.getElementById("cycle-up");
 const cycleDown = document.getElementById("cycle-down");
 const resetPage = document.getElementById("reset-page");
+const splatterTheScreen = document.getElementById("splatter");
 const colorInput1 = document.getElementById("color-input-1");
 const colorInput2 = document.getElementById("color-input-2");
 const colorInput3 = document.getElementById("color-input-3");
@@ -86,7 +87,9 @@ function handleArray(response) {
 }
 
 function handlePageChange(color) {
-  console.log(color + "1")
+  currentColor = color;
+  currentIndex = currentArray.indexOf(color);
+  updatedSelect(currentIndex);
 }
 
 colorInput1.addEventListener("change", function(event) {
@@ -121,11 +124,6 @@ displayButton.addEventListener("click", async function() {
 disclaimerButton.addEventListener("click", () => {
   disclaimerMenu.classList.add("hidden");
   mainContentBody.classList.remove("hidden");
-});
-
-optionButton.addEventListener("click", function() {
-  const toggledMenu = document.getElementById("mainMenu");
-  toggledMenu.classList.toggle("hidden");
 });
 
 
@@ -164,3 +162,16 @@ resetPage.addEventListener("click", function() {
     selectedBackground.style.background = "";
   }
 })
+
+splatterTheScreen.addEventListener("click", function() {
+  const bodies = ["body1", "body2", "body3", "body4", "body5", "body6", "body7"];
+
+  if (!userColorsArr.includes("N")) {
+    for (let color of bodies) {
+      const element = document.getElementById(`${color}`);
+      const random = Math.floor(Math.random() * userColorsArr.length);
+      element.style.backgroundColor = userColorsArr[random];
+    }
+  }
+})
+
