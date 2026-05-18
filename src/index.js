@@ -41,8 +41,7 @@ function grabApiModels(resolveCallback, rejectCallback) {
 function handleModelSelection(response) {
   const modelArr = response.result;
   const rand = Math.floor(Math.random() * 6) + 1;
-  grabColorList(modelArr[rand], undefined, handleArray, printError);
-  grabColorList(modelArr[rand], undefined, displayColors, printError);
+  grabColorList(modelArr[rand], userColorsArr, displayColors, printError);
 }
 
 // UI Logic
@@ -75,15 +74,6 @@ function printError() {
   errorP.style.color = "red";
   errorP.innerText = "There was an error, please try again";
   body7.append(errorP);
-}
-
-function handleArray(response) {
-  currentArray = [];
-  const colors = rgbToHex(response);
-  for (let i = 0; i < colors.length; i++) {
-    currentArray.push(colors[i]);
-  }
-  console.log(currentArray);
 }
 
 function handlePageChange(color) {
