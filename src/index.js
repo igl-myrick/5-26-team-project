@@ -5,6 +5,7 @@ import './css/styles.css';
 import ColorService from './api.js';
 import getColors from './getColors.js';
 import rgbToHex from './rgbToHex.js';
+import hexToRgb from './hexToRgb.js';
 
 // IDs and Consts
 
@@ -16,6 +17,12 @@ const optionButton = document.getElementById("options");
 const cycleUp = document.getElementById("cycle-up");
 const cycleDown = document.getElementById("cycle-down");
 const resetPage = document.getElementById("reset-page");
+const colorInput1 = document.getElementById("color-input-1");
+const colorInput2 = document.getElementById("color-input-2");
+const colorInput3 = document.getElementById("color-input-3");
+const colorInput4 = document.getElementById("color-input-4");
+const colorInput5 = document.getElementById("color-input-5");
+let userColorsArr = ["N", "N", "N", "N", "N"];
 
 // Business Logic
 
@@ -77,6 +84,26 @@ function handlePageChange(color) {
   console.log(color + "1")
 }
 
+colorInput1.addEventListener("change", function(event) {
+  userColorsArr[0] = hexToRgb(event.target.value);
+});
+
+colorInput2.addEventListener("change", function(event) {
+  userColorsArr[1] = hexToRgb(event.target.value);
+});
+
+colorInput3.addEventListener("change", function(event) {
+  userColorsArr[2] = hexToRgb(event.target.value);
+});
+
+colorInput4.addEventListener("change", function(event) {
+  userColorsArr[3] = hexToRgb(event.target.value);
+});
+
+colorInput5.addEventListener("change", function(event) {
+  userColorsArr[4] = hexToRgb(event.target.value);
+});
+
 displayButton.addEventListener("click", async function() {
   return grabApiModels(handleModelSelection, printError);
 });
@@ -86,8 +113,7 @@ disclaimerButton.addEventListener("click", function() {
   mainContentBody.classList.remove("hidden");
 });
 
-
 optionButton.addEventListener("click", function() {
   const toggledMenu = document.getElementById("mainMenu");
   toggledMenu.classList.toggle("hidden");
-})
+});
