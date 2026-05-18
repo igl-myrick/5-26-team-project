@@ -24,10 +24,13 @@ const colorInput4 = document.getElementById("color-input-4");
 const colorInput5 = document.getElementById("color-input-5");
 let userColorsArr = ["N", "N", "N", "N", "N"];
 
+let currentArray = [];
+let currentIndex = 0;
+let currentColor = "";
 // Business Logic
 
-function grabColorList(model, resolveCallback, rejectCallback) {
-  ColorService.getColorList(model).then(resolveCallback, rejectCallback);
+function grabColorList(model, colorInput, resolveCallback, rejectCallback) {
+  ColorService.getColorList(model, colorInput).then(resolveCallback, rejectCallback);
 }
 
 function grabApiModels(resolveCallback, rejectCallback) {
@@ -37,8 +40,8 @@ function grabApiModels(resolveCallback, rejectCallback) {
 function handleModelSelection(response) {
   const modelArr = response.result;
   const rand = Math.floor(Math.random() * 6) + 1;
-  grabColorList(modelArr[rand], handleArray, printError);
-  grabColorList(modelArr[rand], displayColors, printError);
+  grabColorList(modelArr[rand], undefined, handleArray, printError);
+  grabColorList(modelArr[rand], undefined, displayColors, printError);
 }
 
 // UI Logic
@@ -74,10 +77,12 @@ function printError() {
 }
 
 function handleArray(response) {
-  const arrayList = response.result;
-  for (let i = 0; i < arrayList; i++) {
-    console.log(arrayList[i]);
+  currentArray = [];
+  const colors = rgbToHex(response);
+  for (let i = 0; i < colors.length; i++) {
+    currentArray.push(colors[i]);
   }
+  console.log(currentArray);
 }
 
 function handlePageChange(color) {
@@ -104,11 +109,16 @@ colorInput5.addEventListener("change", function(event) {
   userColorsArr[4] = hexToRgb(event.target.value);
 });
 
+function updatedSelect() {
+  console.log(currentArray);
+  document.getElementById("selected-item").innerText = currentArray[currentIndex];
+}
+
 displayButton.addEventListener("click", async function() {
   return grabApiModels(handleModelSelection, printError);
 });
 
-disclaimerButton.addEventListener("click", function() {
+disclaimerButton.addEventListener("click", () => {
   disclaimerMenu.classList.add("hidden");
   mainContentBody.classList.remove("hidden");
 });
@@ -117,3 +127,42 @@ optionButton.addEventListener("click", function() {
   const toggledMenu = document.getElementById("mainMenu");
   toggledMenu.classList.toggle("hidden");
 });
+
+
+optionButton.addEventListener("click", () => {
+  const toggledMenu = document.getElementById("mainMenu");
+  toggledMenu.classList.toggle("hidden");
+
+  if (!toggledMenu.classList.contains("hidden")) {
+    optionButton.innerText = "Click Me to Hide Options";
+  } else {
+    optionButton.innerText = "Click me for Options";
+  }
+})
+
+cycleUp.addEventListener("click", function() {
+  if (currentArray.length === 0) {
+    return;
+  } else {
+    currentIndex = (currentIndex + 1) % currentArray.length;
+    return currentArray[currentIndex];
+  }
+  updatedSelect();
+})
+
+cycleDown.addEventListener("click", function() {
+  if (currentArray.length === 0) {
+    return;
+  } else {
+    currentIndex = (currentIndex - 1) % currentArray.length;
+    return currentArray[currentIndex];
+  }
+  updatedSelect()
+})
+
+resetPage.addEventListener("click", function() {
+  for (let i = 0; i < 8; i++) {
+    const selectedBackground = document.getElementById(`body${i}`);
+    selectedBackground.style.background = "";
+  }
+})
