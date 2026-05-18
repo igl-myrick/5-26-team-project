@@ -32,6 +32,7 @@ function grabApiModels(resolveCallback, rejectCallback) {
 function handleModelSelection(response) {
   const modelArr = response.result;
   const rand = Math.floor(Math.random() * 6) + 1;
+  grabColorList(modelArr[rand], undefined, handleArray, printError);
   grabColorList(modelArr[rand], undefined, displayColors, printError);
 }
 
@@ -81,6 +82,7 @@ function handlePageChange(color) {
 }
 
 function updatedSelect() {
+  console.log(currentArray);
   document.getElementById("selected-item").innerText = currentArray[currentIndex];
 }
 
@@ -98,22 +100,37 @@ disclaimerButton.addEventListener("click", () => {
 optionButton.addEventListener("click", () => {
   const toggledMenu = document.getElementById("mainMenu");
   toggledMenu.classList.toggle("hidden");
+
+  if (!toggledMenu.classList.contains("hidden")) {
+    optionButton.innerText = "Click Me to Hide Options";
+  } else {
+    optionButton.innerText = "Click me for Options";
+  }
 })
 
-cycleUp.addEventListener("click", () => {
+cycleUp.addEventListener("click", function() {
   if (currentArray.length === 0) {
     return;
   } else {
     currentIndex = (currentIndex + 1) % currentArray.length;
     return currentArray[currentIndex];
   }
+  updatedSelect();
 })
 
-cycleDown.addEventListener("click", () => {
+cycleDown.addEventListener("click", function() {
   if (currentArray.length === 0) {
     return;
   } else {
     currentIndex = (currentIndex - 1) % currentArray.length;
     return currentArray[currentIndex];
+  }
+  updatedSelect()
+})
+
+resetPage.addEventListener("click", function() {
+  for (let i = 0; i < 8; i++) {
+    const selectedBackground = document.getElementById(`body${i}`);
+    selectedBackground.style.background = "";
   }
 })
