@@ -173,6 +173,11 @@
   display: none;
 }
 
+.color-input {
+  border: none;
+  width: 50%;
+}
+
 /* ==== Broad Element Style Changes ==== */
 
 a {
