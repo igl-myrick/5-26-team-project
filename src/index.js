@@ -78,12 +78,12 @@ function handleArray(response) {
 }
 
 function handlePageChange(color) {
-  console.log(color + "1")
+  currentColor = color;
 }
 
-function updatedSelect() {
-  console.log(currentArray);
-  document.getElementById("selected-item").innerText = currentArray[currentIndex];
+function updatedSelect(index) {
+  console.log(currentArray[index]);
+  document.getElementById("selected-item").innerText = currentArray[index];
 }
 
 displayButton.addEventListener("click", async function() {
@@ -113,23 +113,21 @@ cycleUp.addEventListener("click", function() {
     return;
   } else {
     currentIndex = (currentIndex + 1) % currentArray.length;
-    return currentArray[currentIndex];
+    updatedSelect(currentIndex);
   }
-  updatedSelect();
 })
 
 cycleDown.addEventListener("click", function() {
   if (currentArray.length === 0) {
     return;
   } else {
-    currentIndex = (currentIndex - 1) % currentArray.length;
-    return currentArray[currentIndex];
+    currentIndex = (currentIndex - 1 + currentArray.length) % currentArray.length;
+    updatedSelect(currentIndex);
   }
-  updatedSelect()
 })
 
 resetPage.addEventListener("click", function() {
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i <= 7; i++) {
     const selectedBackground = document.getElementById(`body${i}`);
     selectedBackground.style.background = "";
   }
